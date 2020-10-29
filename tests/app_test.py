@@ -1,7 +1,7 @@
-import pytest
-import os
 import json
 from pathlib import Path
+
+import pytest
 
 from project.app import app, db
 

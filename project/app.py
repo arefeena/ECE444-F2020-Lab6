@@ -1,10 +1,8 @@
-import sqlite3
 from functools import wraps
 from pathlib import Path
 
 from flask import (
     Flask,
-    g,
     render_template,
     request,
     session,
@@ -15,7 +13,7 @@ from flask import (
     jsonify,
 )
 from flask_sqlalchemy import SQLAlchemy
-
+from project import models
 
 basedir = Path(__file__).resolve().parent
 
@@ -34,8 +32,6 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 # init sqlalchemy
 db = SQLAlchemy(app)
-
-from project import models
 
 
 def login_required(f):
