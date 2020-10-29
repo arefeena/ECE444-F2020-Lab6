@@ -81,3 +81,36 @@ def test_delete_message(client):
     rv = client.get("/delete/1")
     data = json.loads(rv.data)
     assert data["status"] == 1
+
+
+def test_search(client):
+    """Ensure search returns relevant results only"""
+    titles = {"hello", "goodbye", "welcome"}
+
+    # Populate database
+    login(client, app.config["USERNAME"], app.config["PASSWORD"])
+    for title in titles:
+        client.post(
+            "/add",
+            data=dict(title=f"<{title}>", text="body text"),
+            follow_redirects=True,
+        )
+
+    # Perform searches
+    for query in titles:
+        response = client.get(
+            "/search",
+            content_type="html/text",
+            query_string={"query": query},
+            follow_redirects=True,
+        )
+        assert response.status_code == 200
+        response_str = response.data.decode("utf-8")
+
+        for title in titles:
+            # Check that search does return relevant results
+            if title == query:
+                assert title in response_str
+            # Check that search does not return irrelevant results
+            else:
+                assert title not in response_str
