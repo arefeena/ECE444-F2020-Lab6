@@ -39,10 +39,32 @@ Deployment was done through the [Heroku CLI](https://devcenter.heroku.com/articl
 
 ## Activity 2
 
-Here are two test cases I wrote for our project: [LINK](https://github.com/ECE444-2020Fall/project1-webapp-group8-localghosts/blob/0ca2afcfab969c9bbb64036816b55ec65531ec0b/apprentice/tests/test_epic_recipe_search.py#L7-L32)
+Here are two tests I wrote for our project: [LINK](https://github.com/ECE444-2020Fall/project1-webapp-group8-localghosts/blob/0ca2afcfab969c9bbb64036816b55ec65531ec0b/apprentice/tests/test_epic_recipe_search.py#L7-L32)
 
-I also set up all the [basic test cases](https://github.com/ECE444-2020Fall/project1-webapp-group8-localghosts/commit/e6f8d78ecfc2a8020ca623e12b79152436262cff) as part of the initial project structuring, and more recently set up [automated testing through GitHub Actions](https://github.com/ECE444-2020Fall/project1-webapp-group8-localghosts/blob/ca16ff91e58b1834e6d17fd1c0957337879f8ff0/.github/workflows/on-pull-request.yml#L50-L64).
+I also did the initial `unittest` [framework setup](https://github.com/ECE444-2020Fall/project1-webapp-group8-localghosts/commit/e6f8d78ecfc2a8020ca623e12b79152436262cff) as part of the initial project structuring, and more recently set up [automated testing through GitHub Actions](https://github.com/ECE444-2020Fall/project1-webapp-group8-localghosts/blob/ca16ff91e58b1834e6d17fd1c0957337879f8ff0/.github/workflows/on-pull-request.yml#L50-L64).
 
 ## Activity 3
 
-todo
+> What are the pros and cons of test driven development?
+
+Short answer: test-driven development introduces a lot of overhead to a project (especially in the early stages) but if done correctly, it will save time (debugging smaller parts of the application) and money (defects are cheaper to correct the earlier they are identified).
+
+Below is a longer list of pros and cons, largely sourced from the introductory tutorial to this lab:
+
+Pros:
+
+- Forces you to automate your testing process
+- Brings everyone on the same page before implementation begins
+- Gives higher degree of confidence at the time of deployment
+- Testing process not rushed anymore thus better quality of products created
+- Fits well with Agile Methodology
+
+Cons:
+
+- Time consuming
+- Application is only as good as the test cases
+  - Need to consider all possible scenarios, avoid creating "brittle" tests that may break in the future
+  - Tests are assumed to be correct (if the tests are poorly written, the application will be poorly written to meet those standards)
+- Many different levels of tests that need to be considered
+  - Unit tests, integration tests, end-to-end tests
+  - Load testing
